@@ -35,24 +35,24 @@ G = 20;
 r = 0.025;
 
 model;
-Y = C + G;//
-T = theta*(Y + r*B_h(-1));//
-YD = Y - T + r*B_h(-1);//
+Y = C + G;
+T = theta*(Y + r*B_h(-1));
+YD = Y - T + r*B_h(-1);
 //YD_e = YD(-1);
-C = (alpha_1*YD) + (alpha_2*V(-1));//
-B_h = V*(lambda_0 + lambda_1*r - lambda_2*(YD/V));//
-H_h = V - B_h;//
-B_s = B_s(-1) + (G + r*B_s(-1)) - (T + r*B_cb(-1));//
-B_cb = B_s - B_h;//
-H_s = H_s(-1) + B_cb - B_cb(-1);//
-V = V(-1) + (YD - C);//
+C = (alpha_1*YD) + (alpha_2*V(-1));
+B_h = V*(lambda_0 + lambda_1*r - lambda_2*(YD/V));
+H_h = V - B_h;
+B_s = B_s(-1) + (G + r*B_s(-1)) - (T + r*B_cb(-1));
+B_cb = B_s - B_h;
+H_s = H_s(-1) + B_cb - B_cb(-1);
+V = V(-1) + (YD - C);
 //V_e = V(-1) + (YD_e - C);
 // Nicht machen: Sonst wird ein steady state von 0 berechnet
 // G = G(-1);
 end;
 
 initval;
-V = 1.;
+V = 86.;
 end;
 
 histval;
