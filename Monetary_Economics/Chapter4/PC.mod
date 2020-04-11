@@ -15,7 +15,7 @@ var //G
     r
     ;
 
-varexo junk;
+varexo junk test;
 
 parameters theta
            alpha_1
@@ -37,7 +37,7 @@ Y = C + G;//
 T = theta*(Y + r(-1)*B_h(-1));//
 YD = Y - T + r(-1)*B_h(-1);//
 //YD_e = YD(-1);
-C = (alpha_1*YD) + (alpha_2*V(-1));//
+C = ((alpha_1 + test)*YD) + (alpha_2*V(-1));//
 B_h = V*(lambda_0 + lambda_1*r - lambda_2*(YD/V));//
 H_h = V - B_h;//
 B_s = B_s(-1) + (G + r(-1)*B_s(-1)) - (T + r(-1)*B_cb(-1));//
@@ -50,8 +50,23 @@ V = V(-1) + (YD - C);//
 r = r(-1);
 end;
 
+shocks;
+var test; stderr 0;
+end;
+
 initval;
-V = 1.;
+Y = 106.;
+T = 21.26;
+YD = 86.49;
+//YD_e = YD(-1);
+C = 86.49;
+B_h = 64.86;
+H_h = 21.62;
+B_s = 86.49;
+B_cb = 21.62;
+H_s = 21.62;
+V = 86.49;
+r = 0.025;
 end;
 
 histval;
@@ -59,11 +74,10 @@ V(0) = 1.;
 r(0) = 0.025;
 end;
 
-steady(maxit=10);
-//check;
+steady(solve_algo=0);
+check;
 //stoch_simul(irf=20,order=1) Y;
 //forecast(periods=100);
 
-perfect_foresight_setup(periods=200);
-
-perfect_foresight_solver(maxit=100);
+//perfect_foresight_setup(periods=200);
+//perfect_foresight_solver(maxit=100);
