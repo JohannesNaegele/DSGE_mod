@@ -1,5 +1,5 @@
 /*
- * This file implements the baseline Classical Monetary Economy model of Jordi Galí (2008): Monetary Policy, Inflation,
+ * This file implements the baseline Classical Monetary Economy model of Jordi Galï¿½ (2008): Monetary Policy, Inflation,
  * and the Business Cycle, Princeton University Press, Chapter 2
  *
  * Note that this mod-file implements the non-linear first order conditions and that the IRFs show the linear deviations
@@ -10,7 +10,7 @@
  * This implementation was written by Johannes Pfeifer. In case you spot mistakes,
  * email me at jpfeifer@gmx.de
  *
- * Please note that the following copyright notice only applies to this Dynare 
+ * Please note that the following copyright notice only applies to this Dynare
  * implementation of the model.
  */
 
@@ -36,13 +36,13 @@ var C ${C}$ (long_name='Consumption')
     Pi ${\Pi}$ (long_name='inflation')
     A  ${A}$   (long_name='AR(1) technology process')
     N ${N}$   (long_name='Hours worked')
-    R ${R^n}$    (long_name='Nominal Interest Rate') 
+    R ${R^n}$    (long_name='Nominal Interest Rate')
     realinterest ${R^{r}}$ (long_name='Real Interest Rate')
-    Y ${Y}$ (long_name='Output') 
+    Y ${Y}$ (long_name='Output')
     m_growth_ann ${\Delta M}$ (long_name='money growth');
 varexo eps_A ${\varepsilon_A}$   (long_name='technology shock')
        eps_m ${\varepsilon_m}$ (long_name='monetary policy shock')
-       ;   
+       ;
 
 parameters alppha ${\alpha}$ (long_name='capital share')
     betta ${\beta}$ (long_name='discount factor')
@@ -57,7 +57,7 @@ parameters alppha ${\alpha}$ (long_name='capital share')
 % Follows parametrization of Chapter 3, p. 52
 %----------------------------------------------------------------
 
-alppha=0.33; 
+alppha=0.33;
 betta=0.99;
 rho=0.9;
 siggma=1;
@@ -75,7 +75,7 @@ model;
 W_real=C^siggma*N^phi;
 //2. Euler equation eq. (7)
 1/R=betta*(C(+1)/C)^(-siggma)/Pi(+1);
-//3. Production function eq. (8)
+//3. Production function eq. (11)
 A*N^(1-alppha)= C;
 //4. FOC wages firm, eq. (13)
 W_real=(1-alppha)*A*N^(-alppha);
@@ -97,8 +97,8 @@ end;
 %---------------------------------------------------------------
 
 shocks;
-var eps_A; stderr 1;
-var eps_m; stderr 1;
+var eps_A; stderr 0;
+var eps_m; stderr 0;
 end;
 
 %----------------------------------------------------------------
@@ -118,7 +118,7 @@ m_growth_ann=0;
 end;
 
 
-resid(1);
+resid(6);
 steady;
 check;
 
