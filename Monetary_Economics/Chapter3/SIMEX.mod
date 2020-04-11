@@ -2,10 +2,13 @@
 var Y
     T
     YD
+    YD_e
     C
     delta_H_s
     delta_H_h
-    H;
+    delta_H_d
+    H
+    H_d;
 
 varexo junk;
 
@@ -23,10 +26,13 @@ model;
 Y = C + G;
 T = theta*Y;
 YD = Y - T;
-C = (alpha_1*YD) + (alpha_2*H(-1));
+YD_e = YD(-1);
+C = (alpha_1*YD_e) + (alpha_2*H(-1));
 delta_H_s = G - T;
 delta_H_h = YD - C;
 H = delta_H_s + H(-1);
+delta_H_d = YD_e - C;
+H_d = delta_H_d + H(-1);
 end;
 
 histval;
