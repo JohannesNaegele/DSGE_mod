@@ -29,6 +29,11 @@ delta_H_h = YD - C;
 H = delta_H_s + H(-1);
 end;
 
+histval;
+H(0) = 0;
+end;
+
 steady;
 check;
 stoch_simul(irf=20,order=1) Y;
+forecast(periods=100);
