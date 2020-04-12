@@ -39,7 +39,7 @@ histval;
 H(0) = 0;
 end;
 
-steady;
+steady(solve_algo=1,maxit=100);
 check;
 stoch_simul(irf=20,order=1) Y;
 forecast(periods=100);

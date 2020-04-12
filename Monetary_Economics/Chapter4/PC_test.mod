@@ -55,16 +55,16 @@ var test; stderr 0;
 end;
 
 initval;
-Y = 100.;
-T = 100.;
-YD = 100.;
-C = 100.;
-B_h = 100.;
-H_h = 100.;
-B_s = 100.;
-B_cb = 100.;
-H_s = 100.;
-V = 100.;
+Y = 1.;
+T = 1.;
+YD = 1.;
+C = 1.;
+B_h = 1.;
+H_h = 1.;
+B_s = 1.;
+B_cb = 1.;
+H_s = 1.;
+V = 1.;
 r = 0.025;
 end;
 
@@ -73,10 +73,10 @@ V(0) = 1.;
 r(0) = 0.025;
 end;
 
-steady(solve_algo=0,maxit=100);
-check;
-stoch_simul(irf=20,order=1) Y;
-forecast(periods=100);
+steady(solve_algo=1,maxit=100);
+//check;
+//stoch_simul(irf=20,order=1) Y;
+//forecast(periods=100);
 
 //perfect_foresight_setup(periods=200);
 //perfect_foresight_solver(maxit=100);
