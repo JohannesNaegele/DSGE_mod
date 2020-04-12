@@ -69,15 +69,29 @@ V = 86.49;
 r = 0.025;
 end;
 
+// initval;
+// Y = 100.;
+// T = 100.;
+// YD = 100.;
+// C = 100.;
+// B_h = 100.;
+// H_h = 100.;
+// B_s = 100.;
+// B_cb = 100.;
+// H_s = 100.;
+// V = 100.;
+// r = 100.;
+// end;
+
 histval;
 V(0) = 1.;
 r(0) = 0.025;
 end;
 
-steady(solve_algo=0);
+steady(solve_algo=0,maxit=100);
 check;
-//stoch_simul(irf=20,order=1) Y;
-//forecast(periods=100);
+stoch_simul(irf=20,order=1) Y;
+forecast(periods=100);
 
-//perfect_foresight_setup(periods=200);
-//perfect_foresight_solver(maxit=100);
+perfect_foresight_setup(periods=200);
+perfect_foresight_solver(maxit=100);
